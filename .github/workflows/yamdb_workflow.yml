@@ -17,16 +17,12 @@ jobs:
       
       - name: Install dependencies
         run: |
-          # обновдение pip
           python -m pip install --upgrade pip
-          # установка flake8 и его плагинов
           pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
-          # установка зависимостей
           pip install -r api_yamdb/requirements.txt
           
       - name: Test with flake8 and django tests
         run: |
-          # запуск проверки проекта по flake8
           python -m flake8
           pytest
   
@@ -50,11 +46,12 @@ jobs:
           context: ./api_yamdb
           file: ./api_yamdb/Dockerfile
           push: true
-          tags: rezi100r/api_yamdb:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
   
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: executing remote ssh command to deploy
         uses: appleboy/ssh-action@master

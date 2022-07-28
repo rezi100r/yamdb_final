@@ -1,6 +1,8 @@
 # yamdb_final
 ![yamdb workflow](https://github.com/rezi100r/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
+84.252.140.254
+
 ### Описание
 Проект YaMDb собирает отзывы (Review) пользователей на произведения (Title). 
 Произведения делятся на категории: "Книги", "Фильмы", "Музыка". 
@@ -20,6 +22,8 @@ Django 2.2.19
 Docker
 ### # Шаблон наполнения .env файла
 
+Шаблон файла в каталоге ./infra/example.env
+
 	DB_ENGINE=django.db.backends.postgresql # провайдер
 	DB_NAME=postgres		        # имя базы данных
 	POSTGRES_USER=postgres			# пользователь базы данных
@@ -30,28 +34,28 @@ Docker
 ### # Запуск проекта в контейнерах Docker
 - Перейдите в раздел infra для сборки docker-compose
 ```
-# sudo docker-compose up
+sudo docker-compose up
 ```
 
 - Выполнить migrate
 ```
-# sudo docker-compose exec web python manage.py migrate
+sudo docker-compose exec web python manage.py migrate
 ```
 - Для загрузки данных (опционально)
 ```
-# sudo docker-compose exec web python manage.py loaddata db.json
+sudo docker-compose exec web python manage.py loaddata db.json
 ```
 - Создайте пользователя
 ```
-# sudo docker-compose exec web python manage.py createsuperuser
+sudo docker-compose exec web python manage.py createsuperuser
 ```
 - (или) Сменить пароль для пользователя admin
 ```
-# sudo docker-compose exec web python manage.py changepassword admin
+sudo docker-compose exec web python manage.py changepassword admin
 ```
 - Сформируйте STATIC файлы:
 ```
-# sudo docker-compose exec web python manage.py collectstatic --no-input
+sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 # API ресурсы:
 - **AUTH**: Аутентификация.
