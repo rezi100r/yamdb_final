@@ -30,28 +30,28 @@ Docker
 ### # Запуск проекта в контейнерах Docker
 - Перейдите в раздел infra для сборки docker-compose
 ```
-# docker-compose up
+# sudo docker-compose up
 ```
 
 - Выполнить migrate
 ```
-docker-compose exec web python manage.py migrate
+# sudo docker-compose exec web python manage.py migrate
 ```
 - Для загрузки данных (опционально)
 ```
-docker-compose exec web python manage.py loaddata db.json
+# sudo docker-compose exec web python manage.py loaddata db.json
 ```
 - Создайте пользователя
 ```
-docker-compose exec web python manage.py createsuperuser
+# sudo docker-compose exec web python manage.py createsuperuser
 ```
 - (или) Сменить пароль для пользователя admin
 ```
-docker-compose exec web python manage.py changepassword admin
+# sudo docker-compose exec web python manage.py changepassword admin
 ```
 - Сформируйте STATIC файлы:
 ```
-docker-compose exec web python manage.py collectstatic --no-input
+# sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 # API ресурсы:
 - **AUTH**: Аутентификация.
