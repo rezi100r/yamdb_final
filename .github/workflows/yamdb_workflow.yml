@@ -31,7 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: tests
     steps:
-      - run: echo ${{github.ref}}
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Set up Docker Buildx
@@ -52,7 +51,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: executing remote ssh command to deploy
         uses: appleboy/ssh-action@master
